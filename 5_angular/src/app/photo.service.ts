@@ -11,7 +11,6 @@ import Photo from 'src/app/photo.model';
 })
 export class PhotoService {
     readonly url = 'https://jsonplaceholder.typicode.com';
-    readonly limit = 9;
     private page = 0;
 
     constructor(private http: HttpClient) {}
@@ -25,7 +24,7 @@ export class PhotoService {
             // .pipe(tap(_ => console.log(_)));
     }
 
-    getMorePhotos(): Observable<Photo[]> {
-        return this.getPhotos(this.page++ * this.limit, this.limit);
+    getMorePhotos(limit = 9): Observable<Photo[]> {
+        return this.getPhotos(this.page++ * limit, limit);
     }
 }

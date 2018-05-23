@@ -17,15 +17,12 @@ import Photo from 'src/app/photo.model';
 })
 export class PhotoListComponent implements OnInit {
     @Input() photos: Photo[];
+    @Input() showButton = true;
     @Output() loadMore = new EventEmitter();
 
     constructor() {}
 
     ngOnInit() {}
-
-    showButton(): boolean {
-        return true;
-    }
 
     emitLoadMore(): void {
         this.loadMore.emit();

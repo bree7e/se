@@ -13,7 +13,7 @@ import Photo from 'src/app/photo.model';
 export class AppComponent implements OnInit {
     // photos$: Observable<Photo[]>;
     photos: Photo[] = [];
-
+    showButton = true;
 
     constructor(private photoService: PhotoService) {}
 
@@ -22,8 +22,12 @@ export class AppComponent implements OnInit {
     }
 
     onLoadMore(): void {
-        this.photoService.getMorePhotos().subscribe(photos => {
+        const pageSize = 9;
+        this.photoService.getMorePhotos(pageSize).subscribe(photos => {
             this.photos = [...this.photos, ...photos];
+            if (photos.length < pageSize) {
+                this.showButton = false;
+            }
         });
     }
 }
