@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap, merge } from 'rxjs/operators';
 
 import { PhotoService } from './photo.service';
 import Photo from 'src/app/photo.model';
@@ -10,16 +11,19 @@ import Photo from 'src/app/photo.model';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    photos: Observable<Photo[]>;
+    // photos$: Observable<Photo[]>;
+    photos: Photo[] = [];
+
 
     constructor(private photoService: PhotoService) {}
 
     ngOnInit() {
-        this.photos = this.photoService.getPhotos();
-        console.log('init');
+        this.onLoadMore();
     }
 
     onLoadMore(): void {
-        console.log('click on load');
+        this.photoService.getMorePhotos().subscribe(photos => {
+            this.photos = [...this.photos, ...photos];
+        });
     }
 }

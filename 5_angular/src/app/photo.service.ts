@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -10,14 +10,22 @@ import Photo from 'src/app/photo.model';
     providedIn: 'root'
 })
 export class PhotoService {
-    //   private photos: Photo[];
-    private photosUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=10'; // URL to web api
+    readonly url = 'https://jsonplaceholder.typicode.com';
+    readonly limit = 9;
+    private page = 0;
 
     constructor(private http: HttpClient) {}
 
-    getPhotos(start: number = 0, limit: number = null): Observable<Photo[]> {
+    getPhotos(start: number = 0, limit: number = 10): Observable<Photo[]> {
+        const params = new HttpParams()
+            .set('_start', String(start))
+            .set('_limit', String(limit));
         return this.http
-            .get<Photo[]>(this.photosUrl)
-            .pipe(tap(_ => console.log(_)));
+            .get<Photo[]>(this.url + '/photos', { params });
+            // .pipe(tap(_ => console.log(_)));
+    }
+
+    getMorePhotos(): Observable<Photo[]> {
+        return this.getPhotos(this.page++ * this.limit, this.limit);
     }
 }
