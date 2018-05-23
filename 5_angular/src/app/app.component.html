@@ -1,7 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <app-photo-list [photos]="photos | async" (loadMore)="onLoadMore()"></app-photo-list>
-</div>
+<main>
+    <h1>JSONPlaceholder Photos</h1>
+    <app-photo-list [photos]="photos | async" (loadMore)="onLoadMore()"></app-photo-list>
+    <div>
+        <p>
+            Необходимо разработать SPA на последней версии Angular (можно использовать Angular CLI для генерации скелета и компонентов),
+            для работы с данными использовать RxJS. Для стилей не использовать css фреймворки.
+        </p>
+        <p>
+            Основная функциональность - отображение фото по 9 на страницу, с возможностью догрузить следующую страницу по кнопке "Загрузить
+            еще" (когда больше фото нет, не отображать кнопку).
+        </p>
+        <p>
+            API endpoint: https://jsonplaceholder.typicode.com/photos (поддерживается параметры _start и _limit, возвращаемый формат
+            JSON)
+        </p>
+        <p>
+            <a href="https://jsonplaceholder.typicode.com/photos?_start=27&_limit=3">3 фотки начиная с 27</a>
+        </p>
+        <p>
+            Дополнительное задание: По нажатию на миниатюру (thumbnail) фото нужно открывать увеличенную версию фото на весь экран в
+            попапе.
+            <a href="https://www.w3schools.com/howto/howto_css_modals.asp">Например</a>
+        </p>
+    </div>
+</main>

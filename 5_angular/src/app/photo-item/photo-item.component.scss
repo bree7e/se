@@ -1,0 +1,12 @@
+.photo-item {
+    margin: 16px;
+    width: 150px;
+    // border: 1px dotted gray;
+    text-align: center;
+    &__image {
+        border-radius: 8px;
+    }
+    &__title {
+        font-weight: bold;
+    }
+}

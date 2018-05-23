@@ -1,2 +1,4 @@
-<app-photo-item *ngFor="let photo of photos" [photo]="photo"></app-photo-item>
+<div class="photo-list">
+    <app-photo-item *ngFor="let photo of photos" [photo]="photo"></app-photo-item>
+</div>
 <button *ngIf="showButton()" (click)="emitLoadMore()">Загрузить ещё</button>

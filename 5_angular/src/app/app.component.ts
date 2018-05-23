@@ -10,7 +10,6 @@ import Photo from 'src/app/photo.model';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title = 'app';
     photos: Observable<Photo[]>;
 
     constructor(private photoService: PhotoService) {}
