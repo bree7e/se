@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONPlaceholder Photos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: 1.35;
+            color: #141414;
+            text-align: left;
+            background-color: #fff;
+            box-sizing: border-box
+        }
+
+        main {
+            margin: auto;
+            width: 1200px;
+        }
+
+        .photo-list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            border: 1px dotted gray;
+            /* justify-content: space-between; */
+        }
+
+        .photo-item {
+            margin: 16px;
+            width: 150px;
+            border: 1px dotted gray;
+            text-align: center;
+        }
+
+        .photo-item__image {
+            border-radius: 8px;
+        }
+
+        .photo-item__title {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px 32px;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>JSONPlaceholder Photos</h1>
+        <div class="photo-list">
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/92c952" alt="">
+                <span class="photo-item__title">Общайтесь с другими учениками</span>
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/771796" alt="">
+                <span class="photo-item__title">Тренируйте произношение</span>
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/24f355" alt="">
+                <span class="photo-item__title">Разбирайте грамматику</span>
+                
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/d32776" alt="">
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/f66b97" alt="">
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/56a8c2" alt="">
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/771796" alt="">
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/24f355" alt="">
+            </div>
+            <div class="photo-item">
+                <img class="photo-item__image" src="http://placehold.it/150/f66b97" alt="">
+            </div>
+        </div>
+        <button>Загрузить ещё</button>
+        <div>
+            <p>
+                Необходимо разработать SPA на последней версии Angular (можно использовать Angular CLI для генерации скелета и компонентов),
+                для работы с данными использовать RxJS. Для стилей не использовать css фреймворки.
+            </p>
+            <p>
+                Основная функциональность - отображение фото по 9 на страницу, с возможностью догрузить следующую страницу по кнопке "Загрузить
+                еще" (когда больше фото нет, не отображать кнопку).
+            </p>
+            <p>
+                API endpoint: https://jsonplaceholder.typicode.com/photos (поддерживается параметры _start и _limit, возвращаемый формат
+                JSON)
+            </p>
+            <p>
+                <a href="https://jsonplaceholder.typicode.com/photos?_start=27&_limit=3">3 фотки начиная с 27</a>  
+            </p>
+            <p>
+                Дополнительное задание: По нажатию на миниатюру (thumbnail) фото нужно открывать увеличенную версию фото на весь экран в
+                попапе. <a href="https://www.w3schools.com/howto/howto_css_modals.asp">Например</a>
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>
