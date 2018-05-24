@@ -11,6 +11,6 @@ import { TabsModule } from './tabs/tabs.module';
   imports:      [ BrowserModule, FormsModule, TabsModule ],
   declarations: [ AppComponent, HelloComponent, TestComponent ],
   bootstrap:    [ AppComponent ],
-  schemas: [ NO_ERRORS_SCHEMA ]
+//   schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

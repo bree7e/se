@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab-title',
+  // tslint:disable-next-line:component-selector
+  selector: 'tab-title',
   templateUrl: './tab-title.component.html',
   styleUrls: ['./tab-title.component.css']
 })
