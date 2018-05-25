@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-title.component.css']
 })
 export class TabTitleComponent implements OnInit {
+  @Output() activeTab = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

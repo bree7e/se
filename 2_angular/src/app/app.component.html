@@ -7,13 +7,13 @@
 
 <br>
 
-<tabs class="tabs__titles">
-    <tab *ngFor="let tab of tabs" >
-        <tab-title class="tabs__title">
+<tabs>
+    <tab *ngFor="let tab of tabs" [active]="tab == activeTab">
+        <tab-title (click)="selectTab(tab)" >
             Tab
             <b>{{ tab }}</b> title
         </tab-title>
-        <tab-content hidden>
+        <tab-content>
             Tab
             <b>{{ tab }}</b> content
             <test [tab]="tab"></test>
