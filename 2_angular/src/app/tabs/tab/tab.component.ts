@@ -5,8 +5,7 @@ import { TabContentComponent } from '../tab-content/tab-content.component';
 @Component({
     // tslint:disable-next-line:component-selector
     selector: 'tab',
-    templateUrl: './tab.component.html',
-    styleUrls: ['./tab.component.css']
+    templateUrl: './tab.component.html'
 })
 export class TabComponent implements OnInit {
     // @Input() active = false;
@@ -15,10 +14,6 @@ export class TabComponent implements OnInit {
     @HostBinding('class.tabs__title--active') active = false;
     @ViewChild(TabTitleComponent) private title: ElementRef;
     @ViewChild(TabContentComponent) private content: ElementRef;
-
-    constructor() {
-        this.title.nativeElement.class
-    }
 
     ngOnInit() {}
 }
