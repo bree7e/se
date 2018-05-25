@@ -1,2 +1,9 @@
-<ng-content></ng-content>
-
+<ul class="tabs__titles">
+    <li class="tabs__title" 
+        *ngFor="let tab of tabs" 
+        (click)="selectTab(tab)" 
+        [class.tabs__title--active]="tab.active" >
+        <ng-template [ngTemplateOutlet]="tab.titleTemplate"></ng-template>
+    </li>
+</ul>
+<ng-template [ngTemplateOutlet]="activeTab.contentTemplate" *ngIf="tabs.length"></ng-template>

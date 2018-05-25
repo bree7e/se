@@ -1,2 +1,6 @@
-<ng-content></ng-content>
-
+<ng-template #titleTemplate>
+    <ng-content select="tab-title"></ng-content>
+</ng-template>
+<ng-template #contentTemplate>
+    <ng-content select="tab-content"></ng-content>
+</ng-template>

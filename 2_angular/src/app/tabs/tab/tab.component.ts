@@ -1,19 +1,27 @@
-import { Component, OnInit, ViewChild, Input, HostBinding, ElementRef } from '@angular/core';
-import { TabTitleComponent } from '../tab-title/tab-title.component';
-import { TabContentComponent } from '../tab-content/tab-content.component';
+import {
+    Component,
+    Input,
+    Directive,
+    ViewChild,
+    TemplateRef
+} from '@angular/core';
+@Directive({
+    selector: 'tab-title',
+    host: { class: 'tabs__title' }
+})
+export class TabTitle {}
+
+@Directive({
+    selector: 'tab-content'
+})
+export class TabContent {}
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'tab',
     templateUrl: './tab.component.html'
 })
-export class TabComponent implements OnInit {
-    // @Input() active = false;
-    @HostBinding('class.tabs__title') _ = true;
-    @Input()
-    @HostBinding('class.tabs__title--active') active = false;
-    @ViewChild(TabTitleComponent) private title: ElementRef;
-    @ViewChild(TabContentComponent) private content: ElementRef;
-
-    ngOnInit() {}
+export class TabComponent {
+    @Input() active = false;
+    @ViewChild('titleTemplate') public titleTemplate: TemplateRef<TabTitle>;
+    @ViewChild('contentTemplate') public contentTemplate: TemplateRef<TabContent>;
 }
