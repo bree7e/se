@@ -2,11 +2,11 @@
 
 namespace src\Integration;
 
-class DataProvider
+abstract class DataProvider
 {
-    private $host;
-    private $user;
-    private $password;
+    protected $host;
+    protected $user;
+    protected $password;
 
     /**
      * @param $host
@@ -20,13 +20,40 @@ class DataProvider
         $this->password = $password;
     }
 
+	public function getPassword() 
+	{
+		return $this->password;
+	}
+
+	public function setPassword($password) 
+	{
+		$this->password = $password;
+	}
+
+	public function getUser() 
+	{
+		return $this->user;
+	}
+
+	public function setUser($user) 
+	{
+		$this->user = $user;
+	}
+
+	public function getHost() 
+	{
+		return $this->host;
+	}
+
+	public function setHost($host) 
+	{
+		$this->host = $host;
+	}
+
     /**
      * @param array $request
      *
-     * @return array
+     * @return array returns a response from external service
      */
-    public function get(array $request)
-    {
-        // returns a response from external service
-    }
+    abstract public function get(array $request);
 }
