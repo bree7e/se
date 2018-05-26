@@ -31,7 +31,6 @@ class DecoratorManager extends DataProvider
 		return $this->logger;
 	}
 
-
 	public function getCache() 
 	{
 		return $this->cache;
@@ -59,7 +58,7 @@ class DecoratorManager extends DataProvider
                 return $cacheItem->get();
             }
 
-            $result = parent::get($input);
+            $result = parent::getResponse($input);
 
             $cacheItem
                 ->set($result)

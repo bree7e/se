@@ -20,40 +20,47 @@ abstract class DataProvider
         $this->password = $password;
     }
 
-	public function getPassword() 
-	{
-		return $this->password;
-	}
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-	public function setPassword($password) 
-	{
-		$this->password = $password;
-	}
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
 
-	public function getUser() 
-	{
-		return $this->user;
-	}
+    public function getUser()
+    {
+        return $this->user;
+    }
 
-	public function setUser($user) 
-	{
-		$this->user = $user;
-	}
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
-	public function getHost() 
-	{
-		return $this->host;
-	}
+    public function getHost()
+    {
+        return $this->host;
+    }
 
-	public function setHost($host) 
-	{
-		$this->host = $host;
-	}
+    public function setHost($host)
+    {
+        $this->host = $host;
+    }
 
     /**
      * @param array $request
      *
      * @return array returns a response from external service
      */
-    abstract public function get(array $request);
+    public function getResponse(array $request)
+    {
+        // return array(
+        //     'status_code' => $status_code,
+        //     'response' => $body,
+        //     'headers' => $headerArray,
+        // );
+    }
 }
