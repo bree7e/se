@@ -26,25 +26,25 @@ class DecoratorManager extends DataProvider
         $this->logger = $logger;
     }
 
-	public function getLogger() 
-	{
-		return $this->logger;
-	}
+    public function getLogger()
+    {
+        return $this->logger;
+    }
 
-	public function getCache() 
-	{
-		return $this->cache;
-	}
+    public function getCache()
+    {
+        return $this->cache;
+    }
 
-	public function setCache(CacheItemPoolInterface $cache) 
-	{
-		$this->cache = $cache;
-	}
+    public function setCache(CacheItemPoolInterface $cache)
+    {
+        $this->cache = $cache;
+    }
 
     public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
-    }    
+    }
 
     /**
      * {@inheritdoc}
