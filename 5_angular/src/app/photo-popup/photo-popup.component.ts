@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, EventEmitter, Output } from '@angular/core';
+import {
+    Component,
+    Input,
+    ChangeDetectionStrategy,
+    EventEmitter,
+    Output,
+    HostListener
+} from '@angular/core';
 import Photo from 'src/app/photo.model';
 
 @Component({
@@ -7,13 +14,18 @@ import Photo from 'src/app/photo.model';
     styleUrls: ['./photo-popup.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PhotoPopupComponent implements OnInit {
+export class PhotoPopupComponent {
     @Input() photo: Photo;
     @Output() close = new EventEmitter();
 
-    constructor() { }
-
-    ngOnInit() {
+    @HostListener('document:keyup', ['$event'])
+    handleEscape(event: KeyboardEvent): void {
+        if (event.keyCode === 27) {
+            this.closePopup();
+        }
     }
 
+    closePopup() {
+        this.close.emit();
+    }
 }
