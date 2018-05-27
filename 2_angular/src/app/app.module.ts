@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { TestComponent } from './test.component';
 import { TabsModule } from './tabs/tabs.module';
-import { ContentChildrenComp, Tab, Pane } from './content_children_example';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, TabsModule ],
