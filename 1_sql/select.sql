@@ -5,7 +5,7 @@
 
 -- Результат: тема | сообщение | автор | дата.
 -- "Спортивный" вариант. Вытаскивать данные из базы "на месте".
-SELECT t.name AS topic_name, p.content AS message, u.name AS author, p.created_at
+SELECT t.name AS topic_name, p.content AS `message`, u.name AS author, p.created_at
 FROM topics t JOIN posts p
 ON p.id = (
 	SELECT id
@@ -20,10 +20,10 @@ WHERE (
 	WHERE t.id = posts.topic_id
 ) > 3
 ORDER BY p.created_at DESC
-LIMIT 10
+LIMIT 10;
 
 -- Вариант с денормализцей, приближенный к реальности. В темах сразу хранить id последнего сообщения и id автора последнего сообщения.
-SELECT t.name AS topic_name, p.content AS message, u.name AS author, p.created_at
+SELECT t.name AS topic_name, p.content AS `message`, u.name AS author, p.created_at
 FROM topics t JOIN posts p ON t.id = p.topic_id
 	JOIN users u ON t.last_post_user_id = u.id 
 WHERE (
@@ -32,7 +32,7 @@ WHERE (
 	WHERE t.id = posts.topic_id
 ) > 3
 ORDER BY p.created_at DESC
-LIMIT 10
+LIMIT 10;
 
 -- Последние 10 тем по постам
 SELECT t.id AS topic_id, t.name AS topic_name, (
