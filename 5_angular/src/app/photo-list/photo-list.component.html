@@ -1,4 +1,6 @@
 <div class="photo-list">
-    <app-photo-item *ngFor="let photo of photos" [photo]="photo"></app-photo-item>
+    <app-photo-item class="photo-list__item" *ngFor="let photo of photos" [photo]="photo" (click)="showPopup(photo)"></app-photo-item>
 </div>
 <button *ngIf="showButton" (click)="emitLoadMore()">Загрузить ещё</button>
+
+<app-photo-popup [photo]="choosedPhoto" *ngIf="choosedPhoto" (close)="clearPopup()"></app-photo-popup>

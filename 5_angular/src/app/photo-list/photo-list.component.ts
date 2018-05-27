@@ -19,6 +19,7 @@ export class PhotoListComponent implements OnInit {
     @Input() photos: Photo[];
     @Input() showButton = true;
     @Output() loadMore = new EventEmitter();
+    choosedPhoto: Photo = null;
 
     constructor() {}
 
@@ -26,5 +27,13 @@ export class PhotoListComponent implements OnInit {
 
     emitLoadMore(): void {
         this.loadMore.emit();
+    }
+
+    showPopup(photo: Photo): void {
+        this.choosedPhoto = photo;
+    }
+
+    clearPopup(): void {
+        this.choosedPhoto = null;
     }
 }

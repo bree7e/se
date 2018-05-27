@@ -11,7 +11,6 @@ import Photo from 'src/app/photo.model';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    // photos$: Observable<Photo[]>;
     photos: Photo[] = [];
     showButton = true;
 
@@ -30,4 +29,5 @@ export class AppComponent implements OnInit {
             }
         });
     }
+
 }
