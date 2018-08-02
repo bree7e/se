@@ -3,14 +3,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import Photo from './photo.model';
 
-import Photo from 'src/app/photo.model';
+// import Photo from 'src/app/photo.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PhotoService {
-    readonly url = 'https://jsonplaceholder.typicode.com';
+    readonly url = 'http://localhost:3000';
+    // readonly url = 'https://jsonplaceholder.typicode.com';
     private page = 0;
 
     constructor(private http: HttpClient) {}
