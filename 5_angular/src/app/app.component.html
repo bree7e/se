@@ -1,4 +1,5 @@
 <main>
     <h1>JSONPlaceholder Photos</h1>
-    <app-photo-list [photos]="photos" [showButton]="showButton" (loadMore)="onLoadMore()"></app-photo-list>
+    <!-- <app-photo-list [photos]="photos" [showButton]="showButton" (loadMore)="onLoadMore()"></app-photo-list> -->
+    <app-photo-list [photos]="photos$ | async" [showButton]="showButton" (loadMore)="onLoadMoreReactive()"></app-photo-list>
 </main>

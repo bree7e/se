@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { PhotoService } from './photo.service';
 import Photo from './photo.model';
+import { PhotoServiceReactive } from './photo-reactive.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -10,12 +12,16 @@ import Photo from './photo.model';
 })
 export class AppComponent implements OnInit {
     photos: Photo[] = [];
+    photos$: Observable<Photo[]>;
     showButton = true;
 
-    constructor(private photoService: PhotoService) {}
+    constructor(
+        private photoService: PhotoService,
+        private photoServiceReactive: PhotoServiceReactive
+    ) {}
 
     ngOnInit() {
-        this.onLoadMore();
+        this.photos$ = this.photoServiceReactive.photos$;
     }
 
     onLoadMore(): void {
@@ -28,4 +34,7 @@ export class AppComponent implements OnInit {
         });
     }
 
+    onLoadMoreReactive(): void {
+        this.photoServiceReactive.loadPhotos();
+    }
 }

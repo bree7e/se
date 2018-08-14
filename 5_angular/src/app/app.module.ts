@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PhotoItemComponent } from 'src/app/photo-item/photo-item.component';
-import { PhotoListComponent } from 'src/app/photo-list/photo-list.component';
 import { PhotoPopupComponent } from './photo-popup/photo-popup.component';
+import { PhotoListComponent } from './photo-list/photo-list.component';
+import { PhotoItemComponent } from './photo-item/photo-item.component';
 
 @NgModule({
     declarations: [AppComponent, PhotoItemComponent, PhotoListComponent, PhotoPopupComponent],

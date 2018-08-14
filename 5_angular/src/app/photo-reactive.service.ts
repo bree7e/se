@@ -5,32 +5,28 @@ import { Observable, Subject } from 'rxjs';
 import { tap, concat, publishReplay, refCount, scan } from 'rxjs/operators';
 import Photo from './photo.model';
 
+/**
+ * Операция над фотографиями. Принимает и отправляет массив фотографий
+ */
 type PhotoOperation = (photos: Photo[]) => Photo[];
-const initialPhotos: Photo[] = [];
 
 @Injectable({
     providedIn: 'root'
 })
-export class PhotoService {
-    // readonly url = 'http://localhost:3000';
+export class PhotoServiceReactive {
     readonly url = 'https://jsonplaceholder.typicode.com';
+    readonly perPage = 9;
     private page = 0;
-    /** поток, который публикует новые фотографии один раз */
-    public newPhotos = new Subject<Photo[]>();
+    /** поток функций которые будут применены к photos */
+    private updates = new Subject<PhotoOperation>();
     /** поток фотографий, актуальный на последний момент */
-    public photos: Observable<Photo[]>;
-    /** поток updates получает `operations` которые будут применены к photos,
-     * способ изменить все фотографии в потоке photos */
-    // updates - стрим функций. Типизирован функцией MessageOperation над сообщениями, те принимает и возвращает массив сообщений
-    public updates: Subject<any> = new Subject<any>();
+    public photos$: Observable<Photo[]>;
 
     constructor(private http: HttpClient) {
-        this.photos = this.updates.pipe(
-            scan((messages: Photo[], operation: PhotoOperation) => {
-                return operation(messages);
-            }, initialPhotos),
-            // make sure we can share the most recent list of messages across anyone
-            // who's interested in subscribing and cache the last known list of photos
+        this.photos$ = this.updates.pipe(
+            scan(
+                (messages: Photo[], operation: PhotoOperation) => operation(messages), []
+            ),
             publishReplay(1),
             refCount()
         );
@@ -38,29 +34,24 @@ export class PhotoService {
 
     /**
      * Добавляет в поток фотографии
-     * @param newPhotos - массив новый фотографий
+     * @param newPhotos - массив новых фотографий
      */
-    addPhotos(newPhotos: Photo[]): void {
-        // this.updates.next((photos: Photo[]): Photo[] => {
-        //     return this.photos.pipe(concat(newPhotos));
-        // });
+    private addPhotosToStream(newPhotos: Photo[]): void {
+        this.updates.next((photos: Photo[]): Photo[] => {
+            return photos.concat(newPhotos);
+        });
     }
 
-    getPhotos(start: number = 0, limit: number = 10): Observable<Photo[]> {
+    private getPhotos(start: number = 0): Observable<Photo[]> {
         const params = new HttpParams()
-            .set('_start', String(start))
-            .set('_limit', String(limit));
+            .set('_start', String(start * this.perPage))
+            .set('_limit', String(this.perPage));
         return this.http.get<Photo[]>(this.url + '/photos', { params });
-        // .pipe(tap(_ => console.log(_)));
     }
 
-    getMorePhotos(limit = 9): Observable<Photo[]> {
-        return this.getPhotos(this.page++ * limit, limit);
+    public loadPhotos(): void {
+        this.getPhotos(this.page++).subscribe((newPhotos: Photo[]) => {
+            this.addPhotosToStream(newPhotos);
+        });
     }
 }
-
-// Внутри стрима. Принимается операция и массив сообщений, выполняется операция над этим массивом.
-// На первом шаге операции нет, массив уже с сообщениями
-
-// Императивное добавление в каритнке. Реактивное
-// На кождое новое сообщение надо создать свою функцию типа MessageOperation, которое к стриму сообщений concat'ирует это новое сообщение.
