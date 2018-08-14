@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.photos$ = this.photoServiceReactive.photos$;
+        this.onLoadMoreReactive();
     }
 
     onLoadMoreReactive(): void {
