@@ -11,8 +11,8 @@ import Photo from './photo.model';
     providedIn: 'root'
 })
 export class PhotoService {
-    readonly url = 'http://localhost:3000';
-    // readonly url = 'https://jsonplaceholder.typicode.com';
+    // readonly url = 'http://localhost:3000';
+    readonly url = 'https://jsonplaceholder.typicode.com';
     private page = 0;
 
     constructor(private http: HttpClient) {}

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap, merge } from 'rxjs/operators';
 
 import { PhotoService } from './photo.service';
-import Photo from 'src/app/photo.model';
+import Photo from './photo.model';
 
 @Component({
     selector: 'app-root',
